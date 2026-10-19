@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gptsovits-engine"
+version = "0.2.0"
+description = "Portable, optimized inference engine for GPT-SoVITS (batch, streaming, multi-model, any directory)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [{name = "gptsovits-engine contributors"}]
+keywords = ["tts", "gpt-sovits", "voice-cloning", "inference", "streaming"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
+]
+dependencies = [
+    "numpy",
+    "soundfile",
+]
+
+[project.optional-dependencies]
+# torch 需按机器 CUDA 版本单独安装，故不硬性锁定版本
+torch = ["torch", "torchaudio"]
+dev = ["pytest"]
+
+[project.scripts]
+gptsovits-engine = "gptsovits_engine.engine:main"
+
+[project.urls]
+Homepage = "https://github.com/RVC-Boss/GPT-SoVITS"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["gptsovits_engine*"]

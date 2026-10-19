@@ -1,0 +1,4 @@
+include README.md
+include LICENSE
+recursive-include gptsovits_engine *.py
+global-exclude __pycache__ *.py[cod]
